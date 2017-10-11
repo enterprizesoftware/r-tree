@@ -3,7 +3,7 @@ import { Util } from './util';
 export const Validate = {
   dimensions(value: number) {
     if (value === undefined)
-      throw new Error('Dimension size must be specified for bounding mbr');
+      throw new Error('Dimension size must be specified for bounding region');
     if (value < 2)
       throw new Error('Number of dimensions should be more than 1');
   },

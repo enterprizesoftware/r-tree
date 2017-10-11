@@ -1,26 +1,19 @@
 import { Node } from './node';
 import { Entry } from './entry';
-import { RegionAccessor } from './region-accessor';
 import { Util } from './util';
+import { RTree } from './r-tree';
+import { Region } from './region';
 
-export class NodeImpl<T> implements Node<T> {
-  limit: number;
-  entries: Array<Entry<T>>;
+export abstract class NodeImpl<T> implements Node<T> {
+  rTree: RTree<T>;
+  level: number;
+  id: any;
+  capacity: number;
+  mbr: Region;
+  entries: Entry<T>[];
 
-  constructor() {
-    this.entries = [];
+  numEntries(): number {
+    return this.entries ? this.entries.length : 0;
   }
 
-  isLeaf(): boolean {
-    if (this.entries.length === 0)
-      return true;
-    return Util.every(this.entries, entry => entry.isLeaf());
-  }
-
-
-  isInternal(): boolean {
-    if (this.entries.length === 0)
-      return false;
-    return Util.every(this.entries, entry => entry.isInternal());
-  }
 }

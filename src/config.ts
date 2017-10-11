@@ -1,5 +1,12 @@
+import { Statistics } from './statistics';
+
 export interface Config {
-  maxEntries: number;
-  minEntries: number;
   dimensions: number;
+  fillFactor: number;
+  indexCapacity: number;
+  leafCapacity: number;
+  nearMinimumOverlapFactor: number;
+  splitDistributionFactor: number;
+  reinsertFactor: number;
+  tightMbrs: boolean;
 }

@@ -1,8 +1,8 @@
-import { BoundingRectangle } from './bounding-rectangle';
-import { RegionAccessor } from './region-accessor';
+import { Region } from './region';
 
 export interface Entry<T> {
-  mbr: BoundingRectangle;
+  mbr: Region;
+  ref: T | Node;
 
   isInternal(): boolean;
   isLeaf(): boolean;

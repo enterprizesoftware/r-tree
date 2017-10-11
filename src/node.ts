@@ -1,9 +1,16 @@
 import { Entry } from './entry';
-import { RegionAccessor } from './region-accessor';
+import { RTree } from './r-tree';
+import { Region } from './region';
 
 export interface Node<T> {
-  entries: Array<Entry<T>>;
+  rTree: RTree<T>;
+  level: number;
+  id: any;
+  capacity: number;
+  mbr: Region;
+  entries: Entry<T>[];
 
+  numEntries(): number;
   isLeaf(): boolean;
   isInternal(): boolean;
 }
